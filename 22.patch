@@ -1,0 +1,48 @@
+From 3a10dde5884e9a2db5774f55def70ab52557e480 Mon Sep 17 00:00:00 2001
+From: Lukas Aumair <aumair.lukas@oton-media.com>
+Date: Sat, 25 Aug 2018 13:58:22 +0200
+Subject: [PATCH] Bugfixes on Android iBeacon monitoring
+
+---
+ .../src/main/kotlin/io/intheloup/beacons/BeaconsPlugin.kt | 2 +-
+ lib/data/beacon_region.dart                               | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/android/src/main/kotlin/io/intheloup/beacons/BeaconsPlugin.kt b/android/src/main/kotlin/io/intheloup/beacons/BeaconsPlugin.kt
+index f87e451..c52d0bd 100644
+--- a/android/src/main/kotlin/io/intheloup/beacons/BeaconsPlugin.kt
++++ b/android/src/main/kotlin/io/intheloup/beacons/BeaconsPlugin.kt
+@@ -32,7 +32,7 @@ class BeaconsPlugin(val registrar: Registrar) {
+             }
+ 
+             override fun onActivityDestroyed(activity: Activity) {
+-                beaconClient.unbind()
++                // beaconClient.unbind()
+                 permissionClient.unbind()
+             }
+ 
+diff --git a/lib/data/beacon_region.dart b/lib/data/beacon_region.dart
+index 4be1bf5..eafcbd1 100644
+--- a/lib/data/beacon_region.dart
++++ b/lib/data/beacon_region.dart
+@@ -19,8 +19,8 @@ class BeaconRegionIBeacon extends BeaconRegion {
+   BeaconRegionIBeacon({
+     @required String identifier,
+     @required String proximityUUID,
+-    int major,
+-    int minor,
++    String major,
++    String minor,
+   }) : super(
+           identifier: identifier,
+           ids: [],
+@@ -44,7 +44,7 @@ class BeaconRegionIBeacon extends BeaconRegion {
+ 
+   String get proximityUUID => ids[0];
+ 
+-  int get major => ids.length > 1 ? ids[1] : null;
++  String get major => ids.length > 1 ? ids[1] : null;
+ 
+-  int get minor => ids.length > 2 ? ids[2] : null;
++  String get minor => ids.length > 2 ? ids[2] : null;
+ }
