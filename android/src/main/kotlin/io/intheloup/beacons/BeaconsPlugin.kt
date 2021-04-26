@@ -49,7 +49,7 @@ class BeaconsPlugin(val registrar: Registrar) {
 
             }
 
-            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
 
             }
 
