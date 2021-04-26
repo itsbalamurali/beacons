@@ -34,25 +34,26 @@ class BeaconsPlugin(val registrar: Registrar) {
             override fun onActivityDestroyed(activity: Activity) {
                 // beaconClient.unbind()
                 permissionClient.unbind()
+                activity.application.unregisterActivityLifecycleCallbacks(this)
             }
 
-            override fun onActivityResumed(activity: Activity?) {
+            override fun onActivityResumed(activity: Activity) {
                 beaconClient.resume()
             }
 
-            override fun onActivityPaused(activity: Activity?) {
+            override fun onActivityPaused(activity: Activity) {
                 beaconClient.pause()
             }
 
-            override fun onActivityStarted(activity: Activity?) {
+            override fun onActivityStarted(activity: Activity) {
 
             }
 
-            override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
 
             }
 
-            override fun onActivityStopped(activity: Activity?) {
+            override fun onActivityStopped(activity: Activity) {
 
             }
         })
