@@ -242,11 +242,11 @@ class BeaconsClient(private val permissionClient: PermissionClient) : BeaconCons
         return activity!!.applicationContext
     }
 
-    override fun unbindService(p0: ServiceConnection?) {
+    override fun unbindService(p0: ServiceConnection) {
         return activity!!.unbindService(p0)
     }
 
-    override fun bindService(p0: Intent?, p1: ServiceConnection?, p2: Int): Boolean {
+    override fun bindService(p0: Intent?, p1: ServiceConnection, p2: Int): Boolean {
         return activity!!.bindService(p0, p1, p2)
     }
 
